@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AlgorithmResultsService } from 'src/app/services/algorithm-results/algorithm-results.service';
 
 @Component({
   selector: 'app-algorithms-results',
@@ -7,11 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlgorithmsResultsComponent implements OnInit {
 
-  constructor() { }
+  dataSource = [];
+  displayedColumns: string[] = ['executionTime', 'complexity', 'searchedValue'];
+
+  constructor(private algorithmResultsService:AlgorithmResultsService) { }
 
   ngOnInit() {
+    this.algorithmResultsService.get().subscribe(x=>{
+      this.dataSource = x;
+      console.log("response = ", x);
+    });
   }
-
 }
 
 

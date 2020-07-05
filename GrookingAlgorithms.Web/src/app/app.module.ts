@@ -4,7 +4,10 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LayoutComponent } from './shared/layout/layout.component';
+import {MatTableModule} from '@angular/material'
 import { AlgorithmsResultsComponent } from './components/algorithms-results/algorithms-results.component';
+import { HttpClientModule }from '@angular/common/http';
+import { AlgorithmResultsService } from './services/algorithm-results/algorithm-results.service';
 
 @NgModule({
   declarations: [
@@ -14,9 +17,11 @@ import { AlgorithmsResultsComponent } from './components/algorithms-results/algo
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatTableModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [AlgorithmResultsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
